@@ -1,0 +1,29 @@
+# EPIC-2 task 2.16 — protected, two reviewers, requires typed
+# tenant_id confirmation. Skeleton; implementation pending.
+
+name: tenant-destroy
+on:
+  workflow_dispatch:
+    inputs:
+      tenant_id:
+        description: "Tenant ID — TYPE THIS EXACTLY to confirm destroy"
+        required: true
+        type: string
+      confirm_tenant_id:
+        description: "Repeat tenant_id — must match the field above (typed-confirmation gate)"
+        required: true
+        type: string
+
+jobs:
+  destroy:
+    runs-on: [self-hosted, airx-platform, linux]
+    environment:
+      name: tenant-destroy
+    steps:
+      - name: Verify typed confirmation matches
+        run: |
+          if [[ "${{ inputs.tenant_id }}" != "${{ inputs.confirm_tenant_id }}" ]]; then
+            echo "Confirmation mismatch — aborting." >&2
+            exit 1
+          fi
+      - run: echo "TODO task 2.16 — terraform destroy"

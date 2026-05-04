@@ -1,0 +1,18 @@
+# EPIC-2 task 2.15 — manual approve, two reviewers, runs apply against
+# the client sub. Skeleton; implementation pending.
+
+name: tenant-apply
+on:
+  workflow_dispatch:
+    inputs:
+      tenant_id:
+        required: true
+        type: string
+
+jobs:
+  apply:
+    runs-on: [self-hosted, airx-platform, linux]
+    environment:
+      name: tenant-apply
+    steps:
+      - run: echo "TODO task 2.15 — terraform apply, two-reviewer gate via GH environment protection rules"

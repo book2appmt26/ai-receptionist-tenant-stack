@@ -1,0 +1,17 @@
+# EPIC-2 task 2.14 — PR-driven plan against tenant-configs tfvars.
+# Skeleton; implementation pending. Triggers on PR in tenant-configs
+# (cross-repo) — wiring TBD.
+
+name: tenant-plan
+on:
+  workflow_dispatch:
+    inputs:
+      tenant_id:
+        required: true
+        type: string
+
+jobs:
+  plan:
+    runs-on: [self-hosted, airx-platform, linux]
+    steps:
+      - run: echo "TODO task 2.14 — terraform plan -var-file=../../tenant-configs/${{ inputs.tenant_id }}.tfvars"
