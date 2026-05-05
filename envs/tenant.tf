@@ -129,6 +129,7 @@ module "tenant_redis" {
   region              = var.region
   resource_group_name = module.tenant_network.resource_group_name
   subnet_id           = module.tenant_network.redis_subnet_id
+  private_dns_zone_id = module.tenant_network.private_dns_zone_ids["redis"]
 }
 
 module "tenant_storage" {
