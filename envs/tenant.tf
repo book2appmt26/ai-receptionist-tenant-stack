@@ -110,12 +110,14 @@ module "tenant_postgres" {
   providers = {
     azurerm = azurerm.client
   }
-  tenant_id           = var.tenant_id
-  region              = var.region
-  resource_group_name = module.tenant_network.resource_group_name
-  vnet_id             = module.tenant_network.vnet_id
-  subnet_id           = module.tenant_network.postgres_subnet_id
-  cmk_key_id          = module.tenant_keyvault.cmk_key_id
+  tenant_id              = var.tenant_id
+  region                 = var.region
+  resource_group_name    = module.tenant_network.resource_group_name
+  vnet_id                = module.tenant_network.vnet_id
+  subnet_id              = module.tenant_network.postgres_subnet_id
+  private_dns_zone_id    = module.tenant_network.private_dns_zone_ids["postgres"]
+  cmk_key_versionless_id = module.tenant_keyvault.cmk_key_versionless_id
+  keyvault_id            = module.tenant_keyvault.keyvault_id
 }
 
 module "tenant_redis" {
