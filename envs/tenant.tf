@@ -140,6 +140,8 @@ module "tenant_storage" {
   tenant_id           = var.tenant_id
   region              = var.region
   resource_group_name = module.tenant_network.resource_group_name
+  subnet_id           = module.tenant_network.storage_subnet_id
+  private_dns_zone_id = module.tenant_network.private_dns_zone_ids["storage"]
 }
 
 module "tenant_entra" {
