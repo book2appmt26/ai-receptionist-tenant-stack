@@ -98,9 +98,11 @@ module "tenant_keyvault" {
   providers = {
     azurerm = azurerm.client
   }
-  tenant_id          = var.tenant_id
-  region             = var.region
+  tenant_id           = var.tenant_id
+  region              = var.region
   resource_group_name = module.tenant_network.resource_group_name
+  subnet_id           = module.tenant_network.keyvault_subnet_id
+  private_dns_zone_id = module.tenant_network.private_dns_zone_ids["keyvault"]
 }
 
 module "tenant_postgres" {
